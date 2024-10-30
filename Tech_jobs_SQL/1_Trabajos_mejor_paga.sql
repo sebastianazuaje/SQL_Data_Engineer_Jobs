@@ -6,7 +6,7 @@ SELECT
     job_schedule_type AS tipo_esquema,
     job_posted_date AS fecha_publicacion,
     job_title AS titulo_puesto,
-    name AS company_name
+    name AS compañía
 FROM 
     job_postings_fact
 LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id  
