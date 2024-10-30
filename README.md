@@ -10,7 +10,7 @@ Con el fin de conocer las habilidades necesarias y entender mi situación en el 
 
 ### Con mis queries busco responder las siguientes preguntas:
 
-1. Cuáles son los puestos mejor pagados para un analista de datos?
+1. Cuáles son los puestos mejor pagados para un analista de datos en remoto?
 2. Cuáles son las skills requeridas para estos puestos de trabajo?
 3. Cuáles son las skills más demandadas para ser un analista de datos?
 4. Cuáles skills están asociadas a un mayor salario?
@@ -28,7 +28,7 @@ Para mi análisis profundo en el mercado laboral de los analistas de datos recur
 # El análisis
 Cada una de las queries busca abordar aspectos diferentes del mercado laboral de un analista de datos. Así abordé las preguntas:
 
-### 1. Puestos mejor pagados para un analista de datos
+### 1. Puestos mejor pagados para un analista de datos en remoto
 
 Para identificar el **top 10** puestos de trabajo **mejor pagados** filtré las posiciones de analista de datos **(Data Analyst)** por el salario medio anual y por la ubicación, enfocado también en trabajos **en remoto**. Esta Query resalta las oportunidades mejor pagadas en el campo.
 
@@ -281,4 +281,52 @@ LIMIT 25
 
 # Lo que aprendí
 
+A lo largo del desarrollo de este proyecto me encontré con algunos desafíos que demandaron lo mejor de mí y de mis conocimientos, aquí algunas cosas aprendidas en el proceso:
+
+- 🔍⌛**Paciencia con las queries mas complejas:**
+Aclarada la pregunta que quería responder, me iba dando cuenta de que la consulta en cuestión requería de muchos detalles como el GROUP BY en aggregatate functions y el correcto uso de CTEs o de los JOINs o de ambos.
+
+- 💡🧩**Resolución de problemas reales:**
+Hallar *preguntas relevantes* a un tema de interés y luego transformarlas en Queries de SQL que me devuelvan curiosos insights.
+
+- 📋✒️**Buenas practicas en los scripts:**
+Llevar un orden en cada línea, entender como ejecuta SQL las cláusulas y que sea fácil de encontrar de forma visible cualquier fallo que pudiera causar un *error en la query.*
+
+- 🎯🤖**Ayuda de las IAs Chat GPT y Perplexity:** Hicieron mas cómodo el análisis de los resultados de las queries, los cuales exportaba en formato JSON para obtener diferentes insights de los que yo mismo había encontrado.
+
 # Conclusiones 
+
+## Insights
+
+### 1. Puestos mejor pagados para un analista de datos en remoto
+
+Existen inconsistencias salariales para diversos roles cono analista de datos. Algunas posiciones de dirección se encuentran descompensadas en comparación a otras de simple analista de datos. Lo que sugiere que solo el título no es un predictor fiable del salario y que depende en mayor medida de la empresa empleadora.
+
+### 2. Skills requeridas para estos puestos de trabajo
+
+Conocer y dominar las herramientas y lenguajes de programación que permitan mayor versatilidad a la hora de realizar consultas, análisis y visualización de los datos, garantizan satisfacer la mayoría de las demandas de skills para un analista de datos. SQL sigue siendo clave como lenguaje de consulta para un analista de datos. 
+
+### 3. Skills más demandadas para ser un analista de datos
+
+Las empresas siguen prefiriendo herramientas de análisis estadístico como Excel, Pandas, Power Bi y R. Sin embargo, para posiciones mas directivas las skills demandadas son Azure, AWS, Snowflake y Databricks. Entre las skills más específicas Go y Gitlab para especializaciones en control de flujos de trabajo e integración en entornos de trabajo de desarrollo técnicos.  
+
+### 4. Skills asociadas a un mayor salario
+
+Las tecnologías de Big Data, como PySpark, y herramientas de gestión de código colaborativo, como Bitbucket, lideran los salarios altos en análisis de datos, mientras que habilidades de nicho en bases de datos y IA, como Couchbase y Watson, ofrecen altas compensaciones a pesar de su demanda específica. Es decir, que las skills entre mayor sea su curva de aprendizaje y mas específicas sean, mayor es la compensación económica, pero mas baja es su demanda también.
+
+### 5. Skills óptimas para aprender
+
+Mayor demanda no siempre significa mayor salario y viceversa.
+El top 5 de skills se compone de:
+
+1. Databricks - 10 demandas - $141,907
+2. Pandas - 9 demandas - $151,821
+3. Numpy - 5 demandas - $143,513
+4. Atlassian - 5 demandas - $131,162
+5. Airflow - 5 demandas - $126,103
+
+Las cinco skills óptimas comparten un enfoque en el manejo, procesamiento y organización eficiente de grandes volúmenes de datos y en la colaboración en proyectos complejos de datos. Esto refleja una tendencia en la analítica de datos hacia habilidades que permiten integración de datos, automatización y trabajo colaborativo, especialmente en contextos de Big Data y DevOps.
+
+## Pensamientos finales
+
+Este proyecto además de divertido me permitió probar y enriquecer mis conocimientos de SQL y Git, los desafíos de las queries complejas y de los errores que a veces me encontraba me obligaron a investigar el orden de ejecución de SQL y a seguir buenas prácticas. Los insights obtenidos me sirven de guía para el mercado laboral como analista de datos y me ayudan a priorizar aquellas skills que debo adquirir o mejorar para aspirar a ciertas posiciones y competir por una mejor compensación económica, simplemente satisfacer mayor cantidad de demandas o entrar en el competitivo mercado de alta demanda y alto salario. Esta exploración resalta la importancia del aprendizaje continuo en el mundo de la informática y la adaptación a las tendencias en el campo del análisis de datos. 
