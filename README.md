@@ -16,7 +16,7 @@ Con el fin de conocer las habilidades necesarias y entender mi situación en el 
 4. Cuáles skills están asociadas a un mayor salario?
 5. Cuáles son las skills óptimas para aprender?
 
-# Heramientas que utilicé
+# Herramientas que utilicé
 Para mi análisis profundo en el mercado laboral de los analistas de datos recurrí a varias herramientas:
 
 - *Visual Studio Code:* Mi herramienta preferida para trabajar en ambientes virtualesy manejar distintos lenguajes de programación, en este caso para ejecutar mis queries.
