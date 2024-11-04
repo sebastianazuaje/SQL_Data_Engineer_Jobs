@@ -10,7 +10,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Analyst' AND
+        job_title_short = 'Data Scientist' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True 
     GROUP BY
@@ -26,7 +26,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Analyst' AND
+        job_title_short = 'Data Scientist' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True
     GROUP BY
@@ -42,7 +42,6 @@ FROM
     demanda_skills
 INNER JOIN promedio_salarial ON demanda_skills.skill_id = promedio_salarial.skill_id
 ORDER BY
-    promedio_paga DESC,
-    conteo_demanda DESC
-    
+    conteo_demanda DESC,
+    promedio_paga DESC  
 LIMIT 25
