@@ -17,7 +17,7 @@ Esta es una continuación de mi proyecto anterior "SQL Data Analyst Jobs" en el 
 # Herramientas que utilicé
 Para mi análisis profundo en el mercado laboral de los científicos de datos recurrí a varias herramientas:
 
-- *Visual Studio Code:* Mi herramienta preferida para trabajar en ambientes virtualesy manejar distintos lenguajes de programación, en este caso para ejecutar mis queries.
+- *Visual Studio Code:* Mi herramienta preferida para trabajar en ambientes virtuales y manejar distintos lenguajes de programación, en este caso para ejecutar mis queries.
 
 - *PostgreSQL:* El gestor de base de datos que más domino, ideal para una base de datos tan grande como esta.
 
