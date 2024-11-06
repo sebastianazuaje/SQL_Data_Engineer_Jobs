@@ -10,7 +10,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Scientist' AND
+        job_title_short = 'Data Engineer' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True 
     GROUP BY
@@ -26,7 +26,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Scientist' AND
+        job_title_short = 'Data Engineer' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True
     GROUP BY

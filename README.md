@@ -1,16 +1,16 @@
 # Introducción
-💻 Profundizando en el mercado laboral! Con un enfoque hacia el Data Scientist 📊 y sus puestos de trabajo en todo el mundo 🌐 este proyecto explora el Top 10 puestos de trabajo mejor pagados 💰, las habilidades informáticas más demandadas 🔥 e incluso las habilidades más óptimas mejores pagadas 📈 en análisis de datos.
+💻 Profundizando en el mercado laboral! Con un enfoque hacia el Data Engineer 🔧 y sus puestos de trabajo en todo el mundo 🌐 este proyecto explora el Top 10 puestos de trabajo mejor pagados 💰, las habilidades informáticas más demandadas 🔥 e incluso las habilidades más óptimas mejores pagadas 📈 en ingeniería de datos.
 
 Queries de SQL? echa un vistazo aquí: [SQL_projects](/Tech_jobs_SQL/)
 
 # Antecedentes
-Esta es una continuación de mi proyecto anterior "SQL Data Analyst Jobs" en el que busqué desvelar las habilidades necesarias y entender mi situación en el mercado a la hora de exigir un salario como analista de datos. Sin embargo, mi formación es la de un data scientist y por lo tanto, realicé queries relevantes para entender las habilidades, remuneración económica y demanda en el mercado laboral partiendo del objetivo de convertirme en data scientist. 
+Esta es una continuación de mis proyectos anteriores "SQL Data Analyst y Data Scientost Jobs" en el que busqué desvelar las habilidades necesarias y entender mi situación en el mercado a la hora de exigir un salario en empresas tecnológicas. 
 
 ### Con mis queries busco responder las siguientes preguntas:
 
-1. Cuáles son los puestos mejor pagados para un científico de datos en remoto?
+1. Cuáles son los puestos mejor pagados para un ingeniero de datos en remoto?
 2. Cuáles son las skills requeridas para estos puestos de trabajo?
-3. Cuáles son las skills más demandadas para ser un científico de datos?
+3. Cuáles son las skills más demandadas para ser un ingeniero de datos?
 4. Cuáles skills están asociadas a un mayor salario?
 5. Cuáles son las skills óptimas para aprender?
 
@@ -26,11 +26,11 @@ Para mi análisis profundo en el mercado laboral de los científicos de datos re
 - *ChatGPT:* IA para interpretación de los JSON resultado de la Query e investigación en simultáneo de las skills desconocidas.
 
 # El análisis
-Cada una de las queries busca abordar aspectos diferentes del mercado laboral de un científico de datos. Así abordé las preguntas:
+Cada una de las queries busca abordar aspectos diferentes del mercado laboral de un ingeniero de datos. Así abordé las preguntas:
 
 ### 1. Puestos mejor pagados para un científico de datos en remoto
 
-Para identificar el **top 10** puestos de trabajo **mejor pagados** filtré las posiciones de científico de datos **(Data Scientist)** por el salario medio anual y por la ubicación, enfocado también en trabajos **en remoto**. Esta Query resalta las oportunidades mejor pagadas en el campo.
+Para identificar el **top 10** puestos de trabajo **mejor pagados** filtré las posiciones de ingeniero de datos **(Data Scientist)** por el salario medio anual y por la ubicación, enfocado también en trabajos **en remoto**. Esta Query resalta las oportunidades mejor pagadas en el campo.
 
 ```sql
 SELECT 
@@ -46,7 +46,7 @@ FROM
     job_postings_fact
 LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id  
 WHERE 
-    job_title_short = 'Data Scientist' AND
+    job_title_short = 'Data Engineer' AND
     job_location IN ('Anywhere') AND
     salary_year_avg IS NOT NULL
 ORDER BY 
@@ -55,7 +55,7 @@ LIMIT 10
 ```
 ### Insights:
 ![Top 10 trabajos por compañía](/assets/Top_10_trabajos_company.png)
-*Este gráfico muestra el top 10 de compañías a nivel mundial que mejor pagan la posición de **Científico de datos** o que lo incluyen en su descripción del puesto. Las posiciones en cuestión son en **Remoto.***
+*Este gráfico muestra el top 10 de compañías a nivel mundial que mejor pagan la posición de **Ingeniero de datos** o que lo incluyen en su descripción del puesto. Las posiciones en cuestión son en **Remoto.***
 ### 2. Skills requeridas para estos puestos de trabajo
 
 Utilizando el top 10 puestos de trabajo de la Query anterior, aquí combiné la tabla de los trabajos posteados junto con la tabla de skills a través del id presente en ambas tablas. De esta forma puedo observar las **skills demandadas** en aquellos puestos **del top**. 
@@ -72,7 +72,7 @@ INNER JOIN
 INNER JOIN
     skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
 WHERE 
-    job_title_short = 'Data Scientist' AND
+    job_title_short = 'Data Engineer' AND
     job_work_from_home = True
 GROUP BY
     skills
@@ -82,18 +82,20 @@ LIMIT 5
 ```
 |skills |conteo_demanda
 |-------|-------------
-|python |10390
-|sql    |7488
-|r      |4674
-|aws    |2593
-|tableau|2458
+|sql    |14213
+|python |13893
+|aws    |8570
+|azure  |6997
+|spark  |6612
 
 ### Insights: 
-1. **Python y R lideran de manera destacada** Con 10,390 menciones, **Python** es la habilidad más demandada, superando ampliamente a otras. Esto reafirma que es el lenguaje de programación esencial y predominante en el campo de la ciencia de datos, probablemente debido a su versatilidad y extensas bibliotecas especializadas como **Pandas, NumPy y Scikit-learn**. **R** sin embargo, con 4,674 sigue teniendo relevancia en el sector académico y de investigación. Su demanda es significativamente menor comparada con **Python y SQL**, lo que podría indicar un uso más especializado en comparación con **Python**.
+1. **La competencia clave:** Vuelve a liderar la demanda **SQL** (14,213 menciones) y se destaca como esencial para los data engineers, lo cual indica que la capacidad de manejar y optimizar bases de datos es un requisito central en el rol.
 
-2. **SQL sigue siendo crítico:**  Con 7,488 menciones, **SQL** es la segunda habilidad más demandada, lo que resalta la importancia de la gestión y consulta de bases de datos. Los empleadores buscan candidatos que puedan manipular y analizar grandes volúmenes de datos almacenados en **bases de datos relacionales**.
+2. **Lenguaje versátil:**  Siguiendo con **Python** (13,893 menciones) que está casi al nivel de SQL, lo que refleja su versatilidad en el análisis de datos, automatización de procesos y, en muchos casos, en el desarrollo de pipelines de datos.
 
-3. **Plataformas de nube y visualización de datos:**. **AWS** (2,593 menciones) y **Tableau** (2,458 menciones) muestran una demanda relevante, lo que sugiere que los empleadores valoran las competencias en infraestructura en la nube y la capacidad de comunicar hallazgos a través de visualización de datos. Esto indica una tendencia hacia la necesidad de habilidades complementarias que permitan gestionar datos en entornos escalables y presentar resultados de manera efectiva.
+3. **AWS vs. Azure en la Nube:** Considerand que **AWS** (8,570 menciones) y Azure (6,997 menciones) son las principales plataformas de computación en la nube solicitadas, podemos evidenciar la competencia entre ambas plataformas. El mercado busca un ingeniero de datos con experiencia en al menos una de ellas.
+
+4. **Habilidad de Procesamiento:** Cerrando el top tenemos a **Spark** que destaca en habilidades en procesamiento de datos a gran escala y en tiempo real, necesarias en empresas que manejan grandes volúmenes de datos, tiene sentido que se halle debajo de **SQL y Python** ya que la **Spark** utiliza estos dos a una mayor velocidad de procesamiento y son por tanto, un prerrequisito de **Spark**.
 
 ### 3. Skills más demandadas para ser un analista de datos
 
@@ -111,7 +113,7 @@ WITH top_trabajos AS (
         job_postings_fact
     LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id  
     WHERE 
-        job_title_short = 'Data Analyst' AND
+        job_title_short = 'Data Engineer' AND
         job_location IN ('Anywhere') AND
         salary_year_avg IS NOT NULL
     ORDER BY 
@@ -134,10 +136,13 @@ ORDER BY
 ### Insights:
 
 ![Salario promedio por empresa](/assets/salario_por_compania.png) 
-*Este gráfico de barras muestra el salario promedio de cada empresa en el conjunto de datos. Selby Jennings tuvo el promedio más alto, seguida de Algo Capital Group, Teramid, Lawrence Harvey y Storm4.*
+*Este gráfico de barras muestra las compañías mencionadas en la primera consulta, la siguiente gráfica nos explica aquellas Skills demandadas por estas compañías*
 
 ![Frecuencia de habilidades en diferentes roles laborales](/assets/frecuencia_skills.png)
-*Este gráfico de barras muestra las habilidades mencionadas con más frecuencia en diferentes roles laborales. Python, SQL, AWS, Pytorch y Tensorflow como las habilidades más comunes en estas empresas, lo que indica su gran demanda en estos roles relacionados con **ETL** de **bases de datos relacionales** y modelos de **Machine Learning**.*
+*Este gráfico de barras muestra las Skills de las compañías anteriores en orden de frecuencia de aparición, siendo las mas frecuentes: Python, Spark, Hadoop, Kafka y Scala. Esto indica su gran demanda en estos roles relacionados con **procesamiento de datos en tiempo real** (*Hadoop, Kafka*) y a gran escala con preferencias a lenguajes de **Big Data** (*Python, Scala, Apache Spark*) en ecosistemas escalables y distribuidos.
+
+#### Y SQL, AWS y Azure? 
+El hecho de que no figuren en las empresas con mejores salarios pero si en la mayoría de las ofertas de empleo sugiere que las mismas empresas confían en infraestructuras personalizadas o que busquen habilidades más especializadas dando por hecho el manejo de la nube como un prerrequisito.
 
 ### 4. Skills asociadas a un mayor salario
 
@@ -154,7 +159,7 @@ INNER JOIN
 INNER JOIN
     skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
 WHERE 
-    job_title_short = 'Data Scientist' AND
+    job_title_short = 'Data Engineer' AND
     salary_year_avg IS NOT NULL AND
     job_work_from_home = True
 GROUP BY
@@ -166,20 +171,20 @@ ORDER BY
 ```
 |top 5 skills   |promedio_paga
 |---------|-------------
-|gdpr     |$217,738
-|golang   |$208,750
-|atlassian|$189,700
-|selenium |$180,000
-|opencv   |$172,500
+|assembly |$192,500
+|mongo    |$182,223
+|ggplot2  |$176,250
+|rust     |$172,819
+|clojure  |$170,867
 
 ### Insights:
-1. Encuanto al desarrollo y progracmación  **Golang** es ideal para la creación de aplicaciones escalables y de alto rendimiento, mientras que **OpenCV** se usa en aplicaciones de visión por computadora. Ambas habilidades requieren un conocimiento profundo de la programación y son valoradas en proyectos de **IA**, robótica y sistemas de backend eficientes.
+1. **Assembly** lidera con el mayor promedio lo que sugiere que las empresas están dispuestas a pagar un alto salario por habilidades de bajo nivel que requieren un conocimiento profundo de hardware y optimización de sistemas, típicamente necesarias en sectores como el desarrollo de sistemas embebidos y aplicaciones de alto rendimiento.
 
-2. Se remunera la automatización y prueba de software. **Selenium** se asocia con la automatización de pruebas, lo cual es fundamental para asegurar la calidad del software en entornos de desarrollo ágil. Esta habilidad complementa otras habilidades de desarrollo al permitir la verificación automática de funcionalidades en aplicaciones web, mejorando la productividad y reduciendo errores manuales.
+2. Demanda de Tecnologías Especializadas y Poco Comunes. **Rust** y **Clojure** son lenguajes menos comunes en comparación con otros lenguajes de programación populares. La alta paga para estos lenguajes puede deberse a una compesanción de las empresas hacia la escasez de expertos en estas tecnologías, destacando la importancia de habilidades de nicho y que ofrecen soluciones seguras y concurrentes (en el caso de **Rust**) y programación funcional avanzada (en el caso de **Clojure**).
 
-3. Alta Paga por una buena gestión de datos. **GDPR** se enfoca en la protección de datos y la privacidad, un área de creciente importancia para cualquier empresa que maneje información personal. La implementación de estándares de cumplimiento es esencial para mantener la confianza del cliente y evitar sanciones legales, lo que explica su alta remuneración.
+3. Creciente valor de las bases de datos NoSQL. **MongoDB** además es la única en la lista indicando que las empresas valoran su alto rendimiento y flexibilidad en sus aplicaciones con datos no estructurados.
 
-4. Las herramientas de colaboración de **Atlassian** están asociadas a la gestión de proyectos en equipos, integrando aspectos de planificación y seguimiento de tareas. Esta habilidad es crucial para empresas que buscan gestionar proyectos de desarrollo de software de forma eficiente, vinculando equipos de desarrollo con procesos de control de calidad, utilizando **Selenium** por ejemplo, y **Jira** para la planificación.
+4. Herramientas de visualización avanzada. Comunmente utilizada en R, **ggplot2** presenta alta remuneración económica debido a su capacidad de generar visualizaciones de datos complejos. Las empresas valoran quienes dominen esta herramienta para la toma de decisiones fundamentada en data. 
 
 ### 5. Skills óptimas para aprender
 
@@ -198,7 +203,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Scientist' AND
+        job_title_short = 'Data Engineer' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True 
     GROUP BY
@@ -214,7 +219,7 @@ WITH demanda_skills AS (
     INNER JOIN
         skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
     WHERE 
-        job_title_short = 'Data Scientist' AND
+        job_title_short = 'Data Engineer' AND
         salary_year_avg IS NOT NULL AND
         job_work_from_home = True
     GROUP BY
@@ -235,86 +240,64 @@ ORDER BY
     
 LIMIT 25
 ```
-| skill_id | Top 25 skills| conteo_demanda | promedio_paga |
-| -------- | ------------ | -------------- | ------------- |
-| 1        | python       | 763            | $143,828        |
-| 0        | sql          | 591            | $142,833        |
-| 5        | r            | 394            | $137,885        |
-| 182      | tableau      | 219            | $146,970        |
-| 76       | aws          | 217            | $149,630        |
-| 92       | spark        | 149            | $150,188        |
-| 99       | tensorflow   | 126            | $151,536        |
-| 74       | azure        | 122            | $142,306        |
-| 101      | pytorch      | 115            | $152,603        |
-| 93       | pandas       | 113            | $144,816        |
-| 186      | sas          | 110            | $129,920        |
-| 7        | sas          | 110            | $129,920        |
-| 97       | hadoop       | 82             | $143,322        |
-| 106      | scikit-learn | 81             | $148,964        |
-| 181      | excel        | 77             | $129,224        |
-| 94       | numpy        | 73             | $149,089        |
-| 80       | snowflake    | 72             | $152,687        |
-| 183      | power bi     | 72             | $131,390        |
-| 4        | java         | 64             | $145,706        |
-| 75       | databricks   | 63             | $139,631        |
-| 81       | gcp          | 59             | $155,811        |
-| 210      | git          | 58             | $132,599        |
-| 8        | go           | 57             | $164,691        |
-| 185      | looker       | 57             | $158,715        |
-| 3        | scala        | 56             | $156,702        |
-
+| skill_id | skills     | conteo_demanda | promedio_paga |
+| -------- | ---------- | -------------- | ------------- |
+| 0        | sql        | 568            | $129,191        |
+| 1        | python     | 535            | $132,200        |
+| 76       | aws        | 367            | $132,865        |
+| 74       | azure      | 254            | $129,574        |
+| 92       | spark      | 237            | $139,838        |
+| 80       | snowflake  | 202            | $134,373        |
+| 96       | airflow    | 151            | $138,518        |
+| 78       | redshift   | 141            | $132,980        |
+| 4        | java       | 139            | $138,087        |
+| 98       | kafka      | 134            | $150,549        |
+| 75       | databricks | 130            | $130,072        |
+| 3        | scala      | 113            | $141,777        |
+| 97       | hadoop     | 98             | $137,707        |
+| 2        | nosql      | 93             | $136,430        |
+| 61       | sql server | 82             | $121,364        |
+| 81       | gcp        | 76             | $133,388        |
+| 182      | tableau    | 76             | $115,246        |
+| 210      | git        | 74             | $128,352        |
+| 183      | power bi   | 65             | $116,949        |
+| 95       | pyspark    | 64             | $139,428        |
+| 214      | docker     | 64             | $134,286        |
+| 79       | oracle     | 63             | $121,980        |
+| 194      | ssis       | 61             | $115,272        |
+| 5        | r          | 60             | $121,065        |
+| 213      | kubernetes | 56             | $158,190        |
 ### Insights:
-#### 1. Habilidades de Machine Learning e IA bien remuneradas:
+1. **Python y SQL** como competencias esenciales: **Python** (535 menciones, $132,200) y **SQL** (568 menciones, $129,191) son altamente demandadas y tienen buenos salarios, lo que indica que siguen siendo habilidades fundamentales para roles en datos. La combinación de demanda y buena paga sugiere que estas habilidades son esenciales para casi cualquier posición de análisis o ingeniería de datos.
 
-- **PyTorch** ($152,603), **TensorFlow** ($151,536), y **scikit-learn** ($148,964) son destacadas en la lista de habilidades de machine learning con promedios de paga altos. Esto subraya la tendencia de la industria hacia la implementación y desarrollo de modelos de aprendizaje profundo y aprendizaje automático.
+2. **Kafka y Kubernetes**: Altas paga con demanda moderada: Aunque **Kafka** ($150,549) y **Kubernetes** ($158,190) tienen una demanda más baja (134 y 56 menciones respectivamente), su alta paga indica que estas habilidades técnicas avanzadas son muy valoradas por las empresas. Esto sugiere que los roles que requieren experiencia en sistemas distribuidos y contenedores están bien remunerados y reflejan una especialización avanzada.
 
-- **Looker** ($158,715) y **Power BI** ($131,390) destacan como herramientas de Business Intelligence que, aunque no tienen la demanda más alta, ofrecen buenos promedios de paga. Esto resalta la importancia creciente de las habilidades de visualización y análisis de datos para la toma de decisiones estratégicas en las empresas.
-
-#### 2. Habilidades tradicionales con alta demanda:
-- **Excel** ($129,224) y **SAS** ($129,920) tienen un menor promedio de paga en comparación con las tecnologías más modernas. Esto sugiere que, aunque siguen siendo útiles, su valor en el mercado está por debajo de las tecnologías más recientes y avanzadas.
-- La demanda mas alta la protagonizan **Python**(763) y **SQL** (591) destacándose como esenciales en el ámbito de la ciencia de datos. Esto reafirma que las empresas priorizan la capacidad de manejar y analizar datos con herramientas versátiles (**Python**) y la habilidad para interactuar eficientemente con bases de datos (**SQL**). 
-
-#### 3. Procesamiento de datos en la nube:
-- **GCP (Google Cloud Platform)** y **Go** tienen las mayores cifras de promedio de paga con $155,811 y $164,691, respectivamente. Esto refleja una alta demanda y escasez de profesionales con experiencia en estas áreas, destacando su importancia en el desarrollo de infraestructuras escalables y sistemas de backend. 
-- **AWS** ($149,630) y **Spark** ($150,188) muestran tanto alta demanda como un promedio de paga significativo, indicando que las empresas están dispuestas a pagar bien por habilidades que permiten manejar grandes volúmenes de datos y gestionar infraestructuras en la nube.
-
-# Lo que aprendí
-
-A lo largo del desarrollo de este proyecto me encontré con algunos desafíos que demandaron lo mejor de mí y de mis conocimientos, aquí algunas cosas aprendidas en el proceso:
-
-- 🐅🐈**Parecidos pero no iguales:**
-Las competencias de un ciéntifico de datos VS las de un analista de datos, tienen ciertas semjanzas como el indispensable manejo de **SQL, Python o R** y de las herramientas de visualización. Pero se tienden a especializar por la *gestión de datos en la nube* y el manejo de *modelos de machine learning* mas especializados.
-
-- 🔒🔑**Complementación:**
-Mientras que un analista de datos se encarga de interpretar y procesar los datos, muchas de las labores de los puestos de trabajo de un científico de datos tienen que ver con desarrollar herramientas que permitan procesar los mismos.
-
-- 💆📂**De nuevo con SQL:**
-Ya puedes ir corrigiendo esos *error en la query* porque **SQL** mantiene los mismos números en su demanda bien sea para un analista bien sea para un científico de datos.
+3. **Spark y Airflow** en procesamiento de datos avanzado: **Spark** (237 menciones, $139,838) y **Airflow** (151 menciones, $138,518) son demandados y ofrecen salarios competitivos, lo que refleja la necesidad de habilidades en procesamiento y gestión de flujos de trabajo de datos a gran escala. Esto muestra que las empresas buscan optimizar sus pipelines de datos y están dispuestas a invertir en habilidades de procesamiento distribuido y automatización.
 
 # Conclusiones 
 
 ## Insights
 
-### 1. Puestos mejor pagados para un científico de datos en remoto
+### 1. Puestos mejor pagados para un ingeniero de datos en remoto
 
- Las habilidades tradicionales siguen siendo fundamentales y son ampliamente demandadas, mientras que las competencias más avanzadas y especializadas pueden ofrecer mayores remuneraciones. Esto sugiere que, para maximizar el valor en el mercado laboral, los profesionales de la ciencia de datos deben combinar una base sólida en habilidades esenciales con el desarrollo de competencias especializadas que estén en crecimiento.
+ Las posiciones de Data Engineer son de las mejor remuneradas en el mundo del Big Data y las empresas están dispuestas a ofrecer jugosos salarios por aquellos con conocimientos demostrables de sus skills relevantes.
 
 ### 2. Skills requeridas para estos puestos de trabajo
 
-**Python** y **SQL** son las habilidades más esenciales y demandadas, con Python liderando por su versatilidad y vasto ecosistema de bibliotecas especializadas, y **SQL** siendo indispensable para la gestión y consulta de bases de datos relacionales. Las habilidades en plataformas de nube como **AWS** y herramientas de visualización de datos como **Tableau** también son altamente valoradas, lo que evidencia la importancia de complementar las competencias de análisis con capacidades de manejo de infraestructuras escalables y presentación de datos.
+**SQL** es el pilar indiscutible para un ingeniero de datos, por lo que esta skill debe dominarse antes de avanzar siquiera con los demás lenguaje de programación. Las herramientas de espacios colaborativos en la nube son más comunes que nunca por lo que también es necesario saber operar en ellos y por último tener conocimientos de herramientas de procesamiento de datos a gran escala. Abarcando así y de manera satisfactoria la mayor parte de las demandas de habilidad del mercado laboral de un Data Engineer.
 
-### 3. Skills más demandadas para ser un científico de datos
+### 3. Skills más demandadas para ser un ingeniero de datos
 
-En cuanto a la especialización, las skills obtienen una mayor demanda en cuanto se refiere a aquellas que permitan la creación de modelos de machine learning y herramientas que faciliten aplicaciones de métodos estadísticos avanzados a los datos.
+Las empresas con los mejores salarios exigen un control en entornos colaborativos y herramientas de procesamiento, junto con un dominio de lenguajes de programación orientada a objetos. Es decir, pagan mejor a aquellos ingenieros de datos que procesan datos en tiempo real efectivamente, pues estos entornos escalables si no están optimizados cuestan mas dinero para la empresa.
 
 ### 4. Skills asociadas a un mayor salario
 
-El mercado tecnológico actual premia la combinación de habilidades avanzadas en desarrollo y gestión de proyectos. Competencias en **Golang** y **OpenCV** son altamente valoradas por su aplicación en **IA** y sistemas escalables, mientras que la automatización de pruebas con **Selenium** es clave para mantener la calidad en entornos ágiles. La alta paga asociada a la protección de datos con **GDPR** refleja la importancia de la privacidad y cumplimiento legal. Además, las herramientas de colaboración de **Atlassian** destacan por su capacidad de coordinar equipos y optimizar la planificación y control de calidad, subrayando que la gestión eficaz de proyectos es tan vital como las habilidades técnicas.
+El mercado tecnológico recompensa generosamente a los ingenieros de datos que sean capaces de asegurar la estructura de los pipelines, tengan conocimiento de hardware y que sean capaces de comunicar información de datos complejos de manera efectiva. Mayor responsabilidad, mayor paga.
 
 ### 5. Skills óptimas para aprender
 
-Las habilidades en **Machine Learning e IA,** como **PyTorch** y **scikit-learn**, están bien remuneradas, reflejando la creciente implementación de modelos de aprendizaje profundo en la industria. Herramientas de Business Intelligence como **Looker** y **Power BI** también destacan, subrayando la importancia de la visualización de datos en la toma de decisiones empresariales. **AWS** y **Spark** son valoradas por su capacidad de manejar grandes volúmenes de datos en la nube. Por lo tanto, es óptimo aprender al menos una habilidad de cada par mencionado para satisfacer las demandas de los empleadores y a su vez recibir una buena remuneración. 
+Las habilidades óptimas combinan conocimientos amplios en programación y bases de datos con capacidades específicas en infraestructura de datos avanzada. Esto sugiere que las empresas están dispuestas a pagar salarios elevados para roles que, además de cubrir lo básico, añaden valor a través de la capacidad de escalar, automatizar y optimizar el procesamiento de datos a gran escala.
 
 ## Pensamientos finales
 
-Después de haber analizado las skills necesarias para un científico de datos según el mercado laboral he llegado a la conclusión que se necesitan buenas bases de donde partir para el procesamiento de datos, esto se refleja en la alta demanda aunque baja remuneración de **Excel, Python y SQL** como bases indispensables y luego tomar un camino por la especialización en cuanto a gestión de datos en entornos colaborativos en la nube de **GCP o AWS**, dominio de **Spark** o **Pytorch**; skills que su baja demanda es inversamente proporcional a su remuneración económica por lo que parece. Estas demandas dependerán del modo en que opere la empresa empleadora, pero una vez conociendo una herramienta es más fácil adaptarse a otra. 
+En el camino de un ingeniero de datos vale más tener una sólida base de **SQL y Python** para el manejo de bases de datos. Luego escoger espacios en la nube como **AWS, Azure o GCP** y  dominar frameworks como **Hadoop o Apache Spark** después de tener una sólida base de conocimientos de las anteriores skills y por último me especializaría en sistemas distribuidos como **Kafka**. Ese sería mi camino de éxito.
